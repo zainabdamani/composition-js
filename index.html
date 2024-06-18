@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+class Escritor {
+    #nome;
+    constructor(nome) {
+        this.#nome = nome;
+    }
+}
+
+class Publicacao {
+    #titulo;
+    #escritor;
+    constructor(titulo, escritor) {
+        this.#titulo = titulo;
+        this.#escritor = escritor; //(aqui eh o objeto do autor (exemplo do steeringwheel daniel))
+    }
+}
+
+class Prateleira {
+    #publicacoes;
+    constructor() {
+        this.#publicacoes = [];
+    }
+    
+    adicionarPublicacao(pub) {
+        this.#publicacoes.push(pub);  //(exemplo trator daniel)
+    }
+}
+
+class Sala {
+    #nome;
+    #prateleiras;
+    constructor(nome) {
+        this.#nome = nome;
+        this.#prateleiras = [];
+    }
+    
+    adicionarPrateleira(prat) {
+        this.#prateleiras.push(prat);
+    }
+}
+
+class Biblioteca {
+    #nome;
+    #salas;
+    constructor(nome) {
+        this.#nome = nome;
+        this.#salas = [];
+    }
+    
+    adicionarSala(sala) {
+        this.#salas.push(sala);
+    }
+}
+
+const escritor1 = new Escritor("dostoievksi");
+const escritor2 = new Escritor("tolstoi");
+
+const pub1 = new Publicacao("memorias do subsolo", escritor1);
+const pub2 = new Publicacao("a morte de ivan ilitch", escritor2);
+
+const prat1 = new Prateleira();
+prat1.adicionarPublicacao(pub1);
+prat1.adicionarPublicacao(pub2);
+
+const sala1 = new Sala("setor dos russos");
+sala1.adicionarPrateleira(prat1);
+
+const bib = new Biblioteca("leitura classica");
+bib.adicionarSala(sala1);
+
+console.log(bib);
+
+    </script>
+</body>
+</html>
